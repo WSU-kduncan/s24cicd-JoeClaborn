@@ -9,29 +9,29 @@
 ```
                                   +----------------------------------------+
                                   |                                        |
-                                  |             GitHub Repository           |
+                                  |             GitHub Repository          |
                                   |                                        |
-                                  +---------------+----------------+---------+
+                                  +---------------+----------------+-------+
                                                   |                |
-                                                  | (1) Push      |
-                                                  | Changes       |
+                                                  | (1) Push       |
+                                                  | Changes        |
                                                   |                |
                                                   v                v
                                   +---------------+----------------+---------+
-                                  |                                        |
-                                  |         GitHub Actions Workflow        |
-                                  |                                        |
+                                  |                                          |
+                                  |         GitHub Actions Workflow          |
+                                  |                                          |
                                   +---------------+----------------+---------+
                                                   |                |
-                                                  | (2) Trigger   |
-                                                  | Workflow      |
+                                                  | (2) Trigger    |
+                                                  | Workflow       |
                                                   |                |
                                                   v                v
                    +------------------------------+----------------+---------+
-                   |                                                            |
-                   |                    Workflow Execution                      |
-                   |                                                            |
-                   +-------------+--------------+--------------+-----------------+
+                   |                                                         |
+                   |                    Workflow Execution                   |
+                   |                                                         |
+                   +-------------+--------------+--------------+-------------+
                                  |              |              |
                                  | (3) Set up   | (4) Build    | (5) Publish
                                  | Environment  | Docker Image | Docker Image
@@ -47,7 +47,6 @@
             |                    |   Container) |   Image)     |                 |
             |                    |              |              |                 |
             +--------------------+--------------+--------------+-----------------+
-
 ```
 ### Diagramming Image Explanation:
 - Changes pushed to the GitHub repository trigger the GitHub Actions workflow.
@@ -72,12 +71,12 @@ After building the Docker image, run the container using the following command: 
 ### Viewing the Project Running in the Container:
 - Open a web browser and navigate to 'http://localhost:<host_port>' to view the project running inside the Docker container. If using WSL2, use the IP address of your WSL2 instance instead of 'localhost'.
 - If the project is running on a different port, replace '<host_port>' with the port you specified while running the container.
-### Process to create public repo in DockerHub:
+### Process to create public repo in DockerHub
 - Go to DockerHub and log in to your account.
 - Click on "Create Repository" button.
 - Fill in the details such as the name of the repository, description, visibility (public/private), and other settings as needed.
 - Click on "Create".
-### How to authenticate with DockerHub via CLI using Dockerhub credentials:
+### How to authenticate with DockerHub via CLI using Dockerhub credentials
 - Authenticating with DockerHub via CLI:
   - Install Docker on your system if you haven't already.
   - Open your terminal or command prompt.
@@ -85,19 +84,19 @@ After building the Docker image, run the container using the following command: 
   - Alternatively, you can use `docker login -u <username> -p <password>` to provide credentials directly.
 - What credentials would you recommend providing?
   - I recommend providing your Docker username and Docker password for the authentication process. However, for security purposes, a security token can be used rather than a password.
-### How to push container image to Dockerhub (without GitHub Actions):
+### How to push container image to Dockerhub (without GitHub Actions)
 - Pushing Container Image to DockerHub:
   - After building your Docker image locally using `docker build`, tag the image with your DockerHub username and repository name: `docker tag image_name dockerhub_username/repository_name`.
   - Then, push the tagged image to DockerHub: `docker push dockerhub_username/repository_name`.
-### Link to your DockerHub repository:
+### Link to your DockerHub repository
 - You can find the link to your DockerHub repository on the DockerHub website under the repository settings or simply by navigating to `https://hub.docker.com/r/<username>/<repository_name>`.
-### Configuring GitHub Secrets:
+### Configuring GitHub Secrets
 - Setting a Secret in GitHub:
   - Go to your GitHub repository.
   - Navigate to "Settings" and then "Secrets".
   - Click on "New repository secret" and add your secret name and value.
 - Secrets set for this project are the `DOCKER_USERNAME` secret which holds the value of my docker username, along with the `DOCKER_PASSWORD` secret that holds the value of my docker account's access token.
-### Behavior of GitHub workflow:
+### Behavior of GitHub workflow
 - The GitHub workflow is typically configured to automate the building and pushing of Docker images to DockerHub.
 - It runs whenever changes are pushed to the specified branches (e.g., main, develop).
 - Custom variables in the workflow might include the `DockerHub repository name`, `DockerHub username`, and any specific build settings or environment variables required for your application.
