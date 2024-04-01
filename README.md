@@ -5,6 +5,56 @@
 - CI/CD Platform
 - Docker for containerization
 - Scripting languages (e.g., Bash, WSL2)
+### Diagramming Image:
+```
+                                  +----------------------------------------+
+                                  |                                        |
+                                  |             GitHub Repository           |
+                                  |                                        |
+                                  +---------------+----------------+---------+
+                                                  |                |
+                                                  | (1) Push      |
+                                                  | Changes       |
+                                                  |                |
+                                                  v                v
+                                  +---------------+----------------+---------+
+                                  |                                        |
+                                  |         GitHub Actions Workflow        |
+                                  |                                        |
+                                  +---------------+----------------+---------+
+                                                  |                |
+                                                  | (2) Trigger   |
+                                                  | Workflow      |
+                                                  |                |
+                                                  v                v
+                   +------------------------------+----------------+---------+
+                   |                                                            |
+                   |                    Workflow Execution                      |
+                   |                                                            |
+                   +-------------+--------------+--------------+-----------------+
+                                 |              |              |
+                                 | (3) Set up   | (4) Build    | (5) Publish
+                                 | Environment  | Docker Image | Docker Image
+                                 |              |              | to DockerHub
+                                 v              v              v
+            +--------------------+--------------+--------------+-----------------+
+            |                    |              |              |                 |
+            |    Environment     |   Docker     |   Docker     |    DockerHub    |
+            |    Preparation     |   Build      |   Image      |    Registry     |
+            |    (e.g., install  |   Process    |   Creation   |    (Store       |
+            |    dependencies,   |   (Building  |   (Creation  |    Docker       |
+            |    setup tools)    |   Docker     |   of Docker  |    Images)      |
+            |                    |   Container) |   Image)     |                 |
+            |                    |              |              |                 |
+            +--------------------+--------------+--------------+-----------------+
+```
+### Diagramming Image Explanation:
+- Changes pushed to the GitHub repository trigger the GitHub Actions workflow.
+- The GitHub Actions workflow is triggered and starts execution.
+- Workflow execution begins with setting up the environment necessary for building the Docker image. (This step might involve installing dependencies and configuring tools.)
+- Once the environment is set up, the workflow proceeds to build the Docker image based on the specifications defined in the Dockerfile.
+- After the Docker image is successfully built, it is published to DockerHub, which serves as a registry for storing Docker images.
+- The DockerHub registry stores the Docker image, making it available for deployment on various platforms.
 ### Run Project Locally:
 - Clone the project repository from the version control system.
 - Install project dependencies using package manager or build tools.
