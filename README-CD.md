@@ -41,8 +41,8 @@
 
 ### How to generate a tag in git / GitHub
 - Commit all changes.
-- Run `git tag`.
-- Push the tag using `git push --tags`.
+- Run `git tag -a <tag>`.
+- Push the tag using `git push origin <tag>`.
 ### Behavior of GitHub workflow
 - Build Docker Image from the codebase.
 - Generates multiple tags for Docker Image based on the Git tag that is pushed to the repo.
