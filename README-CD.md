@@ -63,7 +63,7 @@
   - The script should be placed in a directory accessible to the user who will execute it on the instance. For simplicity, it can be placed in the home directory of the user.
 ### Setting up a webhook listener on the instance
 - How to install adnanh's webhook to the instance:
-  - Make sure that the 'Go' Environment is properly set-up on version 1.4+, then run the command `$ go build github.com/adnanh/webhook` to start the webhook.
+  - Make sure that the 'Go' Environment is properly set-up on version 1.4+, then run the command `go build github.com/adnanh/webhook` to start the webhook.
 ### `webhook` task definition file
 - Description of what it does:
   - The webhook task definition file (`webhook.json`) defines the webhook configurations, including the execute command, response message, and trigger rules.
