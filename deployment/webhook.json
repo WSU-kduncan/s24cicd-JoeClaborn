@@ -1,8 +1,8 @@
 [
   {
     "id": "restart",
-    "execute-command": "~/s24cicd-JoeClaborn/deployment/update_container.sh",
-    "command-working-directory": "~/s24cicd-JoeClaborn/deployment",
+    "execute-command": "~/ubuntu/s24cicd-JoeClaborn/deployment/update_container.sh",
+    "command-working-directory": "~/ubuntu/s24cicd-JoeClaborn/deployment",
   }
 ]
 
