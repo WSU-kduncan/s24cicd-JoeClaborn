@@ -2,7 +2,7 @@
   {
     "id": "restart",
     "execute-command": "~/ubuntu/s24cicd-JoeClaborn/deployment/update_container.sh",
-    "command-working-directory": "~/ubuntu/s24cicd-JoeClaborn/deployment",
+    "command-working-directory": "~/ubuntu"
   }
 ]
 
