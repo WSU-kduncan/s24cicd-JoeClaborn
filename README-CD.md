@@ -5,6 +5,38 @@
   - GitHub Actions
   - Docer Hub
   - adnanh's Webhook
+- Diagram:
+  `
+  +----------------------------------------+
+  |              GitHub Repository         |
+  +----------------------------------------+
+            |    |
+            |    |
+  +----------------------+
+  |   GitHub Actions     |
+  |   Workflow           |
+  |   (on tag push)      |
+  +----------------------+
+              |
+              v
+  +----------------------+
+  |   Docker Hub         |
+  |   Repository         |
+  +----------------------+
+              |
+              v
+  +------------------------------+
+  |   EC2 Instance               |
+  |   (with Docker installed)    |
+  +------------------------------+
+            |               |
+            |               |
+  +-----------------+   +-----------------+
+  |  adnanh's       |   |  Docker         |
+  |  Webhook        |   |  Container      |
+  |  Listener/Hook  |   |                 |
+  +-----------------+   +-----------------+
+`
 ### How to generate a tag in git / GitHub
 - Commit all changes.
 - Run `git tag`.
@@ -28,7 +60,8 @@
 - Where it should be on the instance (if someone were to use your setup):
   - The script should be placed in a directory accessible to the user who will execute it on the instance. For simplicity, it can be placed in the home directory of the user.
 ### Setting up a webhook listener on the instance
-- How to install adnanh's webhook to the instance
+- How to install adnanh's webhook to the instance:
+  - Make sure that the 'Go' Environment is properly set-up on version 1.4+, then run the command `$ go build github.com/adnanh/webhook` to start the webhook.
 ### `webhook` task definition file
 - Description of what it does:
   - The webhook task definition file (`webhook.json`) defines the webhook configurations, including the execute command, response message, and trigger rules.
