@@ -6,7 +6,7 @@
   - Docer Hub
   - adnanh's Webhook
 - Diagram:
-  `
+  ```
   +----------------------------------------+
   |              GitHub Repository         |
   +----------------------------------------+
@@ -36,7 +36,7 @@
   |  Webhook        |   |  Container      |
   |  Listener/Hook  |   |                 |
   +-----------------+   +-----------------+
-`
+```
 ### How to generate a tag in git / GitHub
 - Commit all changes.
 - Run `git tag`.
