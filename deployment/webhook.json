@@ -1,0 +1,19 @@
+[
+  {
+    "id": "project5_id",
+    "execute-command": "~/s24cicd-JoeClaborn/deployment/update_container.sh",
+    "command-working-directory": "~/s24cicd-JoeClaborn/deployment",
+    "response-message": "Container updated successfully",
+    "trigger-rule": {
+      "match": {
+        "type": "value",
+        "value": "push",
+        "parameter": {
+          "source": "header",
+          "name": "X-Github-Event"
+        }
+      }
+    }
+  }
+]
+
