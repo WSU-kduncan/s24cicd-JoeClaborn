@@ -13,13 +13,25 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Get Docker Image Metadata
+      id: metadata
+      uses: docker/metadata-action@v3
+      with:
+        images: dismallake/ceg3120project4ci:latest
+
+    - name: Determine Docker image tags
+      id: tags
+      run: |
+        echo "::set-output name=latest::latest"
+        echo "::set-output name=major::$(echo "${{ steps.metadata.outputs.tags }}" | cut -d'.' -f1)"
+        echo "::set-output name=major_minor::${{ steps.metadata.outputs.tags }}"
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
       with:
         context: .
         push: true
         tags: |
-          dismallake/ceg3120project4:${{ github.ref }}
-          dismallake/ceg3120project4:latest
-          dismallake/ceg3120project4:${{ github.ref | replace('refs/tags/v', '') }}
-          dismallake/ceg3120project4:${{ github.ref | replace('refs/tags/', '') | replace('.', '') }}
+          dismallake/ceg3120project4ci:latest
+          dismallake/ceg3120project4ci:${{ steps.tags.outputs.major }}
+          dismallake/ceg3120project4ci:${{ steps.tags.outputs.major_minor }}
